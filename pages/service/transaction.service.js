@@ -1,7 +1,7 @@
 export async function getAllTransactionsDB() {
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
     try {
-        const response = await fetch(`/api/getHistoryTransactions`, { method: "GET" });
+        const response = await fetch(`${baseUrl}/api/getHistoryTransactions`, { method: "GET" });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
