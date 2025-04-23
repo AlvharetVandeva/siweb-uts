@@ -7,7 +7,7 @@ export default function HistoriTransaksi() {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const transactionsData = await getAllTransactionsDB();
+        const transactionsData = await transactionsDB;
         setTransactions(transactionsData.data); 
       } catch (error) {
         console.error("Gagal mengambil data produk:", error);
