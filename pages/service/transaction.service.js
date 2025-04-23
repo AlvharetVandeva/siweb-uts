@@ -9,8 +9,7 @@ export async function getAllTransactionsDB() {
         console.log("API Response:", result); // Debugging log
         return result; // Pastikan result memiliki properti `data`
       } catch (error) {
-        console.error("Error fetching transactions:", error);
-        console.log(`url: ${baseUrl}/api/getHistoryTransactions`); // Debugging log
+        console.error(`Error fetching transactions:, ${error} : url: ${baseUrl}/api/getHistoryTransactions`); // Debugging log
         return { data: [] }; // Kembalikan array kosong jika terjadi error
       }
 }
