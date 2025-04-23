@@ -10,6 +10,7 @@ export async function getAllTransactionsDB() {
         return result; // Pastikan result memiliki properti `data`
       } catch (error) {
         console.error("Error fetching transactions:", error);
+        console.log(`url: ${baseUrl}/api/getHistoryTransactions`); // Debugging log
         return { data: [] }; // Kembalikan array kosong jika terjadi error
       }
 }
