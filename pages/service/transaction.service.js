@@ -1,9 +1,17 @@
 export async function getAllTransactionsDB() {
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-    const response = await fetch(`${baseUrl}/api/getHistoryTransactions`, { method: "GET" });
-    const data = await response.json();
-    console.log(`data transaksi : ${data}`)
-    return data;
+    try {
+        const response = await fetch(`${baseUrl}/api/getHistoryTransactions`, { method: "GET" });
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const result = await response.json();
+        console.log("API Response:", result); // Debugging log
+        return result; // Pastikan result memiliki properti `data`
+      } catch (error) {
+        console.error("Error fetching transactions:", error);
+        return { data: [] }; // Kembalikan array kosong jika terjadi error
+      }
 }
 
 async function totalRevenue() {

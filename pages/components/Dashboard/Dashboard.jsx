@@ -16,7 +16,6 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [transaction, setTransaction] = useState([]);
-  const getAllTransactionsData = getAllTransactionsDB();
   const latestTransaction = transaction.slice(0, 5);
   
 
@@ -30,7 +29,7 @@ const Dashboard = () => {
 
       const fetchProducts = async () => {
         try {
-            const productsDB = await getAllTransactionsData;
+            const productsDB = await getProductsDB();
             setProducts(productsDB.data); 
         } catch (error) {
             console.error("Gagal mengambil data produk:", error);
@@ -62,7 +61,7 @@ const Dashboard = () => {
     };
 
     checkAuth();
-  }, [router]);
+  }, []);
 
   if (loading) {
     return (

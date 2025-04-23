@@ -3,14 +3,19 @@ import { getAllTransactions, getAllTransactionsDB } from '@/pages/service/transa
 import { useEffect, useState } from 'react';
 export default function HistoriTransaksi() {
   const [transactions, setTransactions] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
         const transactionsData = await getAllTransactionsDB();
-        setTransactions(transactionsData.data); 
+        console.log("Fetched transactions:", transactionsData);
+        setTransactions(transactionsData.data);
+        console.log("Fetched Data transaksi:", transactionsData.data);
       } catch (error) {
-        console.error("Gagal mengambil data produk:", error);
+        console.error("Gagal mengambil data transaksi:", error);
+      } finally {
+        setLoading(false); // Set loading ke false setelah selesai
       }
     };
 
