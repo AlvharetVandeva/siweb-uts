@@ -3,11 +3,11 @@ import { getAllTransactions, getAllTransactionsDB } from '@/pages/service/transa
 import { useEffect, useState } from 'react';
 export default function HistoriTransaksi() {
   const [transactions, setTransactions] = useState([]);
-  const transactionsDB = getAllTransactionsDB()
+
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const transactionsData = await transactionsDB;
+        const transactionsData = await getAllTransactionsDB();
         setTransactions(transactionsData.data); 
       } catch (error) {
         console.error("Gagal mengambil data produk:", error);
@@ -15,7 +15,7 @@ export default function HistoriTransaksi() {
     };
 
     fetchTransactions();
-  }, transactionsDB)
+  }, [])
     return (
       <div className="">
         <Link href="/admin" className="italic text-blue-500">&#x21d0; Kembali</Link>
